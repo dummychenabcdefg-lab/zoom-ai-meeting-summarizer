@@ -143,3 +143,21 @@ through. Two real-world notes baked into the code: the summary events are
 named `summary_updated` (not `summary_delta` as the API reference says)
 with the text in `summary_result`, and normal events carry `"error": null`,
 so only a truthy error is treated as a failure.
+
+## Interactive: `speech_summarizer_console.py`
+
+A console app for the same Speech Summarization API. It asks for your API
+key first (hidden input via `getpass` — never echoed, saved, or printed),
+then for the path to a local `.mp3` or `.mp4` file, uploads it directly,
+and prints the transcript and AI summary:
+
+```bash
+python speech_summarizer_console.py
+# Enter your Zoom AI Services API key (or press Enter to use $ZOOM_API_KEY):
+# Enter the path to an .mp3 or .mp4 file: ./call.mp3
+```
+
+Accepted: `.mp3` (audio) and `.mp4` (video), max 50 MB. Tested end-to-end
+Oct 19 2026 with both formats against the live API. Repo includes
+`test_call.mp3` / `test_call.mp4` (50-second synthetic two-speaker sales
+call) so you can try it immediately.
